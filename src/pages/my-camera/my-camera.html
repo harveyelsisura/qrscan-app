@@ -20,7 +20,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="home">
+<ion-content class="home" overflow-scroll="false">
 
   <div class="additional-div" style="height:40%;">
 
@@ -37,24 +37,24 @@
               </button>
             </ion-grid> -->
 
-        <p padding *ngIf="!scannedCode" text-center>
+        <p text-center>
           <img src="./assets/homepage.png" [height]="180" [width]="180">
         </p>
         <div padding class="container">
-          <hr class="hr-text" data-content="DESCRIPTION">
-          <p padding text-center>A QR code (abbreviation for Quick Response code) is a specific matrix barcode (or two-dimensional code) that is
-            readable by dedicated QR barcode readers and camera telephones. The code consists of black modules arranged in
-            a square pattern on a white background. The information encoded may be text, URL, or other data.
-          </p>
-        </div>
-        <ion-card *ngIf="scannedCode">
-          <ion-card-content>
-            <b ion-item> QR Barcode </b>
-            <p>
-              <b>{{ scannedCode }}</b>
+          <div *ngIf="!scannedCode">
+            <hr class="hr-text" data-content="DESCRIPTION">
+            <p text-center>A QR code (abbreviation for Quick Response code) is a specific matrix barcode (or two-dimensional code) that
+              is readable by dedicated QR barcode readers and camera telephones. The code consists of black modules arranged
+              in a square pattern on a white background. The information encoded may be text, URL, or other data.
             </p>
-          </ion-card-content>
-        </ion-card>
+          </div>
+          <div *ngIf="scannedCode">
+            <hr class="hr-text" data-content="RESULT">
+            <p padding>
+              {{ scannedCode }}
+            </p>
+          </div>
+        </div>
         <p text-center *ngIf="anError">{{ anError }}</p>
       </div>
     </div>
@@ -67,7 +67,7 @@
       <ion-segment-button medium color="transparent" value="tabButtonOne">
         <ion-icon name="home" color="primary"></ion-icon>
       </ion-segment-button>
-      <ion-segment-button medium color="transparent"   (click)="scanCode()">
+      <ion-segment-button medium color="transparent" (click)="scanCode()">
         <!-- takePicture() -->
         <ion-icon name="qr-scanner" color="primary"></ion-icon>
       </ion-segment-button>

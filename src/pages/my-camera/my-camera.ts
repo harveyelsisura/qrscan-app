@@ -42,13 +42,14 @@ export class MyCameraPage {
     this.options = {
       prompt: 'Position the device above the barcode and wait for automatic scanning'
     }
-    this.barcodeScanner.scan().then(barcodeData => {
-      this.scannedCode = barcodeData.text;
+    this.barcodeScanner.scan(this.options).then(barcodeData => {
+      this.scannedCode = barcodeData.text.replace("SMSTO", "To").replace(/;/g, "\n").replace(/:/g, ": ");
     }, (err) => {
       this.anError = err;
       console.log(err);
     });
   }
+
   takePicture() {
     const options: CameraOptions = {
       quality: 100,

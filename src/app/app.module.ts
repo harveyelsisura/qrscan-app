@@ -16,6 +16,7 @@ import { AboutUsPage } from '../pages/about-us/about-us';
 import { SettingsPage } from '../pages/settings/settings';
 import { FaqPage } from '../pages/faq/faq';
 import { PrivacyPage } from '../pages/privacy/privacy';
+import { Toast } from '@ionic-native/toast';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { PrivacyPage } from '../pages/privacy/privacy';
     SplashScreen,
     Camera,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    BarcodeScanner
+    BarcodeScanner,
+    Toast
   ]
 })
 export class AppModule { }

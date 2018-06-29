@@ -6,33 +6,48 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { LoaderPage } from '../pages/loader/loader';
 import { Camera } from '@ionic-native/camera';
 import { MyCameraPage } from '../pages/my-camera/my-camera';
+
+// QR SCANNER
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { AboutUsPage } from '../pages/about-us/about-us';
+import { SettingsPage } from '../pages/settings/settings';
+import { FaqPage } from '../pages/faq/faq';
+import { PrivacyPage } from '../pages/privacy/privacy';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    LoaderPage,
-    MyCameraPage
+    MyCameraPage,
+    AboutUsPage,
+    SettingsPage,
+    FaqPage,
+    PrivacyPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    NgxQRCodeModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    LoaderPage,
-    MyCameraPage
+    MyCameraPage,
+    AboutUsPage,
+    SettingsPage,
+    FaqPage,
+    PrivacyPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Camera,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    BarcodeScanner
   ]
 })
-export class AppModule {}
+export class AppModule { }

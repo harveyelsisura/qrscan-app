@@ -1,6 +1,5 @@
 // http://ionicframework.com/docs/theming/
 
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -14,3 +13,33 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.sideMenus-header img {
+  height: 10em;
+}
+
+.sideMenus-header b {
+  opacity: 1;
+}
+
+.sideMenus-header {
+  position: relative;
+  width: 100%;
+  background: url('../assets/imgs/menuBG.jpg') center center no-repeat;
+  background-size: cover;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to top left,#22313F,#3498DB);
+    opacity: .7;
+  }
+}
+
+.content-md hr {
+  background-color: rgba(0, 0, 0, 0.00);
+}

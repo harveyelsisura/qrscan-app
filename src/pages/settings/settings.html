@@ -1,0 +1,44 @@
+<!--
+  Generated template for the SettingsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+  <ion-navbar color="transparent">
+    <button ion-button icon-only menuToggle>
+      <ion-icon color="primary" name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Settings
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="contact"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <img ion-item src="./assets/imgs/qr-scanner.png" [height]="300" [width]="150">
+
+  <div text-center>
+    <p>A machine-readable code consisting of an array of black and white squares, typically used for storing URLs or other information
+      for reading by the camera on a smartphone.</p>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="transparent">
+    <ion-segment color="light">
+      <ion-segment-button medium (click)="openPage()">
+        <ion-icon name="home" color="primary"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button medium (click)="scanCode()">
+        <!-- takePicture() -->
+        <ion-icon name="qr-scanner" color="primary"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-footer>

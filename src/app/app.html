@@ -1,1 +1,51 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<!-- <div *ngIf="showSplash" class="splash">
+        <ion-content class="spinner">
+            <ion-img [width]="150" style="background: none;" [height]="200" src="./assets/imgs/qr-logo.png"></ion-img>
+        </ion-content>
+</div> -->
+<ion-menu [content]="content" swipeEnabled="true">
+    <ion-header class="sideMenus-header">
+        <ion-grid justify-content-center>
+            <ion-row>
+                <ion-col>
+                    <div text-center>
+                        <img padding src="./assets/imgs/qr-logo.png">
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-header>
+    <ion-content>
+        <ion-list>
+            <!--  (click)="openPage(homePage) " -->
+            <ion-buttons>
+                <button ion-item (click)="openPage(1)">
+                    <ion-icon name="information-circle"></ion-icon>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;About
+                </button>
+            </ion-buttons>
+            <ion-buttons>
+                <button ion-item (click)="openPage(2)">
+                    <ion-icon name="cog"></ion-icon>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Settings
+                </button>
+            </ion-buttons>
+            <ion-buttons>
+                <button ion-item (click)="openPage(3)">
+                    <ion-icon name="paper"></ion-icon>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FAQ
+                </button>
+            </ion-buttons>
+            <ion-buttons>
+                <button ion-item (click)="openPage(4)">
+                    <ion-icon name="lock"></ion-icon>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Privacy Policy
+                </button>
+            </ion-buttons>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+
+
+<ion-nav id="nav " [root]="rootPage " #content swipeBackEnabled="false "></ion-nav>

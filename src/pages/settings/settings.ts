@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MyCameraPage } from '../my-camera/my-camera';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { ServerService } from '../server.service';
 
 /**
  * Generated class for the SettingsPage page.
@@ -19,12 +20,34 @@ export class SettingsPage {
 
   scannedCode = null;
   anError: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-    private barcodeScanner: BarcodeScanner) {
+  data: any;
+  version: any;
+  faq: any;
+  about: any;
+  privacy_policy: any;
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private barcodeScanner: BarcodeScanner,
+    public serverService: ServerService
+  ) {
+    // this.ionViewDidLoad()
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SettingsPage');
+    this.serverService.getInfo().subscribe(
+      response => {
+        console.log(response.json().data)
+        this.version = response.json().data[0].version;
+        this.faq = response.json().data[0].faq;
+        this.about = response.json().data[0].about;
+        this.privacy_policy = response.json().data[0].privacy_policy;
+
+      }, error => {
+        console.log(error)
+      }
+    )
   }
 
   scanCode() {

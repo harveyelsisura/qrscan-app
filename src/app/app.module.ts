@@ -17,6 +17,8 @@ import { SettingsPage } from '../pages/settings/settings';
 import { FaqPage } from '../pages/faq/faq';
 import { PrivacyPage } from '../pages/privacy/privacy';
 import { Toast } from '@ionic-native/toast';
+import { ServerService } from '../pages/server.service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { Toast } from '@ionic-native/toast';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
     NgxQRCodeModule
   ],
@@ -46,6 +49,7 @@ import { Toast } from '@ionic-native/toast';
   providers: [
     StatusBar,
     SplashScreen,
+    ServerService,
     Camera,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     BarcodeScanner,

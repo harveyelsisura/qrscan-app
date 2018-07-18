@@ -50,9 +50,40 @@
           </div>
           <div *ngIf="scannedCode">
             <hr class="hr-text" data-content="RESULT">
-            <p padding>
-              {{ scannedCode }}
+
+            <p padding *ngIf="data">
+              <b *ngIf="status == 1">
+                  <h3 text-center ion-text color="success"> EXPIRED </h3>
+                <b>Issued By:</b> {{ company }}
+                <br>
+                <b>Location:</b> {{ location }}
+                <br>
+                <b>Date Expiry:</b> {{ date_expiry }}
+              </b>
+              <b *ngIf="status == 2">
+                <h3 text-center ion-text color="warning"> EXPIRED </h3>
+                <b>Issued By:</b> {{ company }}
+                <br>
+                <b>Location:</b> {{ location }}
+                <br>
+                <b>Date Expiry:</b> {{ date_expiry }}
+              </b>
+              <b *ngIf="status == 3">
+                  <h3 text-center ion-text color="danger"> NOT FOUND / RETIRED </h3>
+              </b>
+              <b *ngIf="!status">
+                <h3 text-center ion-text color="danger"> NOT FOUND </h3>
+              </b>
             </p>
+
+            <p padding>
+              <b>{{ error }}</b>
+            </p>
+
+            <p padding text-center *ngIf="!data">
+              <ion-spinner icon="lines" class="spinner-calm"></ion-spinner>
+            </p>
+
           </div>
         </div>
         <p text-center *ngIf="anError">{{ anError }}</p>

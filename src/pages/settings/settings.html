@@ -24,8 +24,14 @@
 <ion-content padding>
   <div text-center>
     <h3>QR LOOP</h3>
-      <hr class="hr-text" data-content="Information">
-    <p><b>Version:</b> {{ version }}</p>
+    <hr class="hr-text" data-content="Information">
+    <p *ngIf="data">
+      <b>Version:</b> {{ version }}
+    </p>
+    <p padding text-center *ngIf="!data">
+      <ion-spinner icon="lines" class="spinner-calm"></ion-spinner>
+    </p>
+
   </div>
 </ion-content>
 <ion-footer>

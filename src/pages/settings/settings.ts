@@ -39,10 +39,8 @@ export class SettingsPage {
     this.serverService.getInfo().subscribe(
       response => {
         console.log(response.json().data)
+        this.data = response.json().data
         this.version = response.json().data[0].version;
-        this.faq = response.json().data[0].faq;
-        this.about = response.json().data[0].about;
-        this.privacy_policy = response.json().data[0].privacy_policy;
 
       }, error => {
         console.log(error)

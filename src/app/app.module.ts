@@ -19,6 +19,7 @@ import { PrivacyPage } from '../pages/privacy/privacy';
 import { Toast } from '@ionic-native/toast';
 import { ServerService } from '../pages/server.service';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '../../node_modules/@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { HttpModule } from '@angular/http';
   imports: [
     BrowserModule,
     HttpModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
     NgxQRCodeModule
   ],

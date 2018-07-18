@@ -27,8 +27,11 @@
   </p>
   <div padding class="container">
     <hr class="hr-text" data-content="ABOUT US">
-    <p padding>
-      Under Maintenance
+    <p *ngIf="data" text-center padding>
+      {{ about }}
+    </p>
+    <p padding text-center *ngIf="!data">
+      <ion-spinner icon="lines" class="spinner-calm"></ion-spinner>
     </p>
   </div>
 </ion-content>

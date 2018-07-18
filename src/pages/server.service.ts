@@ -11,18 +11,13 @@ export class ServerService {
     token = localStorage.getItem('token');
     constructor(public http: Http) { }
 
-    // login(data) {
-    //     const
-    //         url = `${API_URL}/myAPI/v1/login`,
-    //         body = JSON.stringify(data);
-    //     const headers = new Headers({ 'Content-type': 'application/json' });
-    //     return this.http.post(url, body, { headers: headers });
-    // };
-    // /myAPI/v1/display_accounts
     getInfo() {
-        const headers = new Headers({ 'Content-type': 'application/json'});
+        const headers = new Headers({ 'Content-type': 'application/json' });
         return this.http.get(`${API_URL}/qrscan/get_info`, { headers: headers });
     }
-
+    getQR(id) {
+        const headers = new Headers({ 'Content-type': 'application/json' });
+        return this.http.get(`${API_URL}/qrscan/qr_specific_info/${id}`, { headers: headers });
+    }
 
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MyCameraPage } from '../my-camera/my-camera';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { ServerService } from '../server.service';
 
 /**
  * Generated class for the FaqPage page.
@@ -16,11 +17,15 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
   templateUrl: 'faq.html',
 })
 export class FaqPage {
-
+  faq: any;
   scannedCode = null;
+  data: any;
   anError: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-    private barcodeScanner: BarcodeScanner) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private barcodeScanner: BarcodeScanner,
+    public serverService: ServerService) {
   }
 
   scanCode() {
@@ -32,9 +37,17 @@ export class FaqPage {
     });
   }
 
-
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FaqPage');
+    this.serverService.getInfo().subscribe(
+      response => {
+        console.log(response.json().data)
+        this.data = response.json().data;
+        this.faq = response.json().data[0].faq;
+
+      }, error => {
+        console.log(error)
+      }
+    )
   }
 
   openPage() {

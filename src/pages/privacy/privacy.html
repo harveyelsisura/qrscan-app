@@ -21,6 +21,9 @@
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content padding text-center>
+  <p *ngIf="data">{{ privacy_policy }} </p>
+  <p *ngIf="!data">
+    <ion-spinner icon="lines" class="spinner-calm"></ion-spinner>
+  </p>
 </ion-content>

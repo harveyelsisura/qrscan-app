@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MyCameraPage } from '../my-camera/my-camera';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { ServerService } from '../server.service';
 
 /**
  * Generated class for the AboutUsPage page.
@@ -16,16 +17,30 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
   templateUrl: 'about-us.html',
 })
 export class AboutUsPage {
-
+  about: any;
   scannedCode = null;
+  data: any;
   anError: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-    private barcodeScanner: BarcodeScanner) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private barcodeScanner: BarcodeScanner,
+    public serverService: ServerService) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AboutUsPage');
+    this.serverService.getInfo().subscribe(
+      response => {
+        this.data = response.json().data;
+        console.log(this.data)
+        this.about = response.json().data[0].about;
+
+      }, error => {
+        console.log(error)
+      }
+    )
   }
+
   scanCode() {
     this.barcodeScanner.scan().then(barcodeData => {
       this.scannedCode = barcodeData.text;
